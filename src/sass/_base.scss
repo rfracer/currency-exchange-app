@@ -1,0 +1,29 @@
+// VARIABLES
+$primary-color: #1971c2;
+$secondary-color: #e03131;
+
+// BASIC GLOBAL SETTINGS, RESETS
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  color: $font-main-color;
+  background-color: $background-color;
+  height: 100%;
+  position: relative;
+}
+
+
+/* UTILITIES*/
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+}
