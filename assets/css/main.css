@@ -1,0 +1,216 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  color: #2c2c2c;
+  background-color: #66a80f;
+  position: relative;
+}
+
+/* UTILITIES*/
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+}
+
+.app-wrapper {
+  position: relative;
+  height: 100%;
+  padding-top: 4rem;
+}
+
+/* APP COMPONENTS */
+.app-logo {
+  width: 13rem;
+  height: auto;
+}
+
+.app-header {
+  margin-bottom: 3rem;
+}
+
+.app-main {
+  position: relative;
+  margin: auto;
+  width: 100%;
+}
+
+.app-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.app-heading::after {
+  position: absolute;
+  content: '';
+  width: 30%;
+  height: 3px;
+  background-color: #fff;
+  left: 0;
+  bottom: -10px;
+}
+
+.exchange-form {
+  margin-top: 5rem;
+  padding: 3rem;
+  background-color: #f2f2f2;
+  border-radius: 1rem;
+  -webkit-box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01), 44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09), 5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01), 44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09), 5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.exchange-form__fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.exchange-form__field-from {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.exchange-form__field-to {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.exchange-form__input-value {
+  width: 100%;
+  font-size: 16px;
+  padding: 1rem 1rem;
+  border: 1px solid #d2d2d2;
+  background-color: #fff;
+}
+
+.exchange-form select {
+  display: inline-block;
+  padding: 1rem 1rem 1rem 0rem;
+  background-color: #fff;
+  border: 1px solid #d2d2d2;
+  margin: 0;
+  width: 6.5rem;
+}
+
+.exchange-form__dec-arrow {
+  margin: 0 1.5rem;
+}
+
+.exchange-form__result {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+.exchange-form__result-title {
+  font-size: 1.4rem;
+}
+
+.exchange-form__result-value {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.btn {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  margin-top: 2rem;
+  font-weight: 600;
+  -webkit-box-shadow: 0px 8px 10px rgba(149, 157, 180, 0.25);
+          box-shadow: 0px 8px 10px rgba(149, 157, 180, 0.25);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn--primary {
+  color: #fff;
+  background-color: #66a80f;
+}
+
+.popular-currency {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.popular-currency-wrapper {
+  margin-top: 5rem;
+  padding: 3rem;
+  background-color: #f2f2f2;
+  border-radius: 1rem;
+  -webkit-box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01), 44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09), 5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01), 44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09), 5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.currency-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.currency-table__row {
+  border-top: 1px solid #d2d2d2;
+}
+
+.currency-table__title {
+  font-size: 1.3rem;
+  padding: 15px 12px 15px 0;
+}
+
+.currency-table__value {
+  padding: 15px 12px 15px 0;
+  text-align: center;
+}
+
+.currency-table__flag-icon {
+  width: 20px;
+  height: auto;
+  margin-right: 0.2rem;
+}
+
+.currency-table .btn-show-more {
+  background: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.currency-table .btn-show-more img {
+  width: 100%;
+}
+/*# sourceMappingURL=main.css.map */
