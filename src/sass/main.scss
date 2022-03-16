@@ -76,6 +76,7 @@
   &__field-from {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
   &__field-to {
@@ -88,10 +89,12 @@
     padding: 1rem 1rem;
     border: 1px solid #d2d2d2;
     background-color: #fff;
+    height: 4rem;
   }
 
   select {
     display: inline-block;
+    height: 4rem;
     padding: 1rem 1rem 1rem 0rem;
     background-color: #fff;
     border: 1px solid #d2d2d2;
@@ -186,4 +189,8 @@
       width: 100%;
     }
   }
+}
+
+.hide {
+  display: none;
 }

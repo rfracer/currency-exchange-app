@@ -99,6 +99,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .exchange-form__field-to {
@@ -113,10 +116,12 @@ body {
   padding: 1rem 1rem;
   border: 1px solid #d2d2d2;
   background-color: #fff;
+  height: 4rem;
 }
 
 .exchange-form select {
   display: inline-block;
+  height: 4rem;
   padding: 1rem 1rem 1rem 0rem;
   background-color: #fff;
   border: 1px solid #d2d2d2;
@@ -212,5 +217,9 @@ body {
 
 .currency-table .btn-show-more img {
   width: 100%;
+}
+
+.hide {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */

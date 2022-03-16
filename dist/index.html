@@ -24,36 +24,37 @@
             <h1 class="app-heading">Currency calculator</h1>
             <div class="exchange-form">
                 <div class="exchange-form__fields-wrapper">
-                    <form class="exchange-form__form">
+                    <form id="calc-form" class="exchange-form__form">
                         <div class="exchange-form__fields">
                             <div class="exchange-form__field-from">
                                 <input autocomplete="off" class="exchange-form__input-value" type="number" name="from"
                                     id="from-value">
-                                <select name="from-currency" id="from-currency">
-                                    <option selected value="PLN">PLN</option>
-                                    <option value="EUR">EUR</option>
-                                    <option value="USD">USD</option>
-                                    <option value="CHF">CHF</option>
-                                </select>
-                            </div>
-                            <div class="exchange-form__dec-arrow">
-                                <img src="./img/arrow-right.svg" alt="">
-                            </div>
-                            <div class="exchange-form__field-to">
                                 <select name="to-currency" id="to-currency">
                                     <option selected value="PLN">PLN</option>
                                     <option value="EUR">EUR</option>
                                     <option value="USD">USD</option>
                                     <option value="CHF">CHF</option>
                                 </select>
+                                <div class="exchange-form__dec-arrow">
+                                    <img src="./img/arrow-right.svg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="exchange-form__field-to">
+                                <select name="from-currency" id="from-currency">
+                                    <option value="PLN">PLN</option>
+                                    <option selected value="EUR">EUR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="CHF">CHF</option>
+                                </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn--primary">CALCULATE</button>
+                        <button id="calc-btn" type="submit" class="btn btn--primary">CALCULATE</button>
                     </form>
                 </div>
-                <div class="exchange-form__result">
+                <div class="exchange-form__result hide">
                     <span class="exchange-form__result-title">OTRZYMASZ:</span>
-                    <span class="exchange-form__result-value">50.42$</span>
+                    <span id="calc-result" class="exchange-form__result-value">50.42$</span>
                 </div>
             </div>
             <section class="popular-currency">
