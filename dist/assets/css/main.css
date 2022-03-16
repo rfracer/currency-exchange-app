@@ -101,6 +101,12 @@ body {
           flex-direction: row;
 }
 
+.exchange-form__field-to {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .exchange-form__input-value {
   width: 100%;
   font-size: 16px;
@@ -109,11 +115,13 @@ body {
   background-color: #fff;
 }
 
-.exchange-form__currency {
+.exchange-form select {
   display: inline-block;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem 1rem 0rem;
   background-color: #fff;
   border: 1px solid #d2d2d2;
+  margin: 0;
+  width: 6.5rem;
 }
 
 .exchange-form__dec-arrow {

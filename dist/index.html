@@ -27,19 +27,25 @@
                     <form class="exchange-form__form">
                         <div class="exchange-form__fields">
                             <div class="exchange-form__field-from">
-                                <input autocomplete="off" class="exchange-form__input-value" type="text" name="from"
-                                    id="from-currency">
-                                <div class="exchange-form__currency">
-                                    PLN
-                                </div>
+                                <input autocomplete="off" class="exchange-form__input-value" type="number" name="from"
+                                    id="from-value">
+                                <select name="from-currency" id="from-currency">
+                                    <option selected value="PLN">PLN</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="CHF">CHF</option>
+                                </select>
                             </div>
                             <div class="exchange-form__dec-arrow">
                                 <img src="./img/arrow-right.svg" alt="">
                             </div>
-                            <div class="exchange-form_field-to">
-                                <div class="exchange-form__currency">
-                                    PLN
-                                </div>
+                            <div class="exchange-form__field-to">
+                                <select name="to-currency" id="to-currency">
+                                    <option selected value="PLN">PLN</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="CHF">CHF</option>
+                                </select>
                             </div>
                         </div>
                         <button type="submit" class="btn btn--primary">CALCULATE</button>
