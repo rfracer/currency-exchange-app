@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency exchange App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/scripts/app.js" defer></script>
+</head>
+
+<body>
+    <div class="app-wrapper container">
+        <header class="app-header">
+            <a href="/">
+                <img class="app-logo" src="./img/logo.png" alt="Forex App Logo">
+            </a>
+        </header>
+        <div class="app-main">
+            <h1 class="app-heading">Currency calculator</h1>
+            <div class="exchange-form">
+                <div class="exchange-form__fields-wrapper">
+                    <form class="exchange-form__form">
+                        <div class="exchange-form__fields">
+                            <div class="exchange-form__field-from">
+                                <input autocomplete="off" class="exchange-form__input-value" type="text" name="from"
+                                    id="from-currency">
+                                <div class="exchange-form__currency">
+                                    PLN
+                                </div>
+                            </div>
+                            <div class="exchange-form__dec-arrow">
+                                <img src="./img/arrow-right.svg" alt="">
+                            </div>
+                            <div class="exchange-form_field-to">
+                                <div class="exchange-form__currency">
+                                    PLN
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn--primary">CALCULATE</button>
+                    </form>
+                </div>
+                <div class="exchange-form__result">
+                    <span class="exchange-form__result-title">OTRZYMASZ:</span>
+                    <span class="exchange-form__result-value">50.42$</span>
+                </div>
+            </div>
+            <section class="popular-currency">
+                <h2 class="app-heading app-heading--sub">Popular currency exchange rates</h2>
+                <div class="popular-currency-wrapper">
+                    <table class="currency-table">
+                        <thead>
+                            <tr>
+                                <th class="currency-table__title"> Currency</th>
+                                <th class="currency-table__title">Value</th>
+                                <!-- <th class="currency-table__title">YESTERDAY</th> -->
+                                <th class="currency-table__title">AVG. 7 DAYS</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="currency-table__row">
+                                <td class="currency-table__value"><img class="currency-table__flag-icon"
+                                        src="./img/USA-flag.png" alt=""> USD</td>
+                                <td class="currency-table__value">3.40</td>
+                                <td class="currency-table__value"> 3.41</td>
+                                <!-- <td>3.36</td> -->
+                                <td><button role="button" class="btn-show-more"><img src="./img/arrow-down.svg"
+                                            alt=""></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <img src="./img/logo.png" alt="">
+                                </td>
+                            </tr>
+                            <tr class="currency-table__row">
+                                <td class="currency-table__value"><img class="currency-table__flag-icon"
+                                        src="./img/USA-flag.png" alt=""> USD</td>
+                                <td class="currency-table__value">3.40a</td>
+                                <td class="currency-table__value"> 3.41</td>
+                                <!-- <td>3.36</td> -->
+                                <td><button role="button" class="btn-show-more"><img src="./img/arrow-down.svg"
+                                            alt=""></button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
