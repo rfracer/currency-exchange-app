@@ -3,7 +3,6 @@ export class Calculate {
 
   constructor() {
     const form = document.getElementById('calc-form');
-    console.log(this.result);
     form.addEventListener('submit', this.calculateHandler.bind(this));
   }
 
@@ -28,7 +27,8 @@ export class Calculate {
       })
       .then((data) => {
         this.generateResult(data.rates[baseCurrency], baseCurrency);
-      });
+      })
+      .catch((err) => alert(err));
   }
 
   generateResult(value, baseCurrency) {
