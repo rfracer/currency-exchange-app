@@ -1,6 +1,6 @@
 import { CurrencyChart } from './CurrencyChart';
 export class CurrencyList {
-  symbols = ['USD', 'EUR', 'CHF'];
+  symbols = ['USD', 'EUR', 'CHF', 'AUD'];
   data = [];
   labels = [];
 
@@ -92,12 +92,10 @@ export class CurrencyList {
         const currency = Object.keys(element)[0];
         cell.dataset.currency = currency; //??
         const average = this.getAverageValue(element[currency]);
-        console.log(element[currency]);
-        console.log(average);
 
-        const values = [currency, element[currency][6], average, ''];
+        const rowValues = [currency, element[currency][6], average, ''];
 
-        const cellText = document.createTextNode(values[i]);
+        const cellText = document.createTextNode(rowValues[i]);
         //first row with flag
         if (i === 0) {
           const img = document.createElement('img');
@@ -180,7 +178,6 @@ export class CurrencyList {
   // }
 
   getAverageValue(arr) {
-    console.log(arr);
     const average = arr.reduce((p, c) => +p + +c, 0) / arr.length;
     return average.toFixed(2);
   }

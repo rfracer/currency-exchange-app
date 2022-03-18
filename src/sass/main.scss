@@ -11,12 +11,16 @@
 @import './components';
 
 .app-logo {
-  width: 13rem;
+  width: 12rem;
   height: auto;
 }
 
 .app-header {
   margin-bottom: 3rem;
+
+  @include tablet {
+    margin-bottom: 5rem;
+  }
 }
 
 .app-main {
@@ -37,12 +41,19 @@
   //     width: 339px;
   //     z-index: -1;
   //   }
+  @include tablet {
+    max-width: 80%;
+  }
+
+  @include desktop {
+    max-width: 50%;
+  }
 }
 
 .app-heading {
   position: relative;
   display: inline-block;
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: $headers-color;
   font-weight: 600;
 
@@ -65,6 +76,16 @@
   box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01),
     44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09),
     5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
 
   &__fields {
     display: flex;
@@ -90,6 +111,10 @@
     border: 1px solid #d2d2d2;
     background-color: #fff;
     height: 4rem;
+
+    &:focus {
+      @include outline-focus;
+    }
   }
 
   select {
@@ -101,6 +126,10 @@
     border: 1px solid #d2d2d2;
     margin: 0;
     width: 6.5rem;
+
+    &:focus {
+      @include outline-focus;
+    }
   }
 
   &__dec-arrow {
@@ -135,6 +164,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 
+  @include tablet {
+    margin-top: 0rem;
+    margin-left: 3rem;
+    width: auto;
+  }
+
   &--primary {
     color: #fff;
     background-color: $primary-color;
@@ -143,7 +178,7 @@
 
 .popular-currency {
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 7rem;
 }
 
 .popular-currency-wrapper {
@@ -174,6 +209,8 @@
   }
 
   &__flag-icon {
+    position: relative;
+    top: 3px;
     width: 20px;
     height: 20px;
     margin-right: 1rem;
@@ -185,7 +222,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 
     img {
       width: 100%;

@@ -39,3 +39,10 @@ select {
   max-width: 1200px;
   width: 90%;
 }
+
+/* MIXINS */
+
+@mixin outline-focus {
+  outline: none;
+  border: 1.5px solid $primary-color;
+}
