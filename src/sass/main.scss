@@ -85,7 +85,7 @@
 
   &__input-value {
     width: 100%;
-    font-size: 16px;
+    font-size: 1.4rem;
     padding: 1rem 1rem;
     border: 1px solid #d2d2d2;
     background-color: #fff;
@@ -95,7 +95,8 @@
   select {
     display: inline-block;
     height: 4rem;
-    padding: 1rem 1rem 1rem 0rem;
+    padding: 1rem 1rem 1rem 0.3rem;
+    font-size: 1.4rem;
     background-color: #fff;
     border: 1px solid #d2d2d2;
     margin: 0;
@@ -184,6 +185,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 
     img {
       width: 100%;
@@ -193,4 +195,8 @@
 
 .hide {
   display: none;
+}
+
+.open {
+  transform: rotate(180deg);
 }

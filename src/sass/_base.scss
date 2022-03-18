@@ -28,6 +28,11 @@ body {
   position: relative;
 }
 
+input,
+select {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* UTILITIES*/
 .container {
   margin: 0 auto;
