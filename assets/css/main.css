@@ -24,34 +24,27 @@ select {
   font-family: 'Poppins', sans-serif;
 }
 
-/* UTILITIES*/
+/* UTILITIES */
+.hide {
+  display: none;
+}
+
+.open {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+/* MIXINS */
 .container {
   margin: 0 auto;
   max-width: 1200px;
   width: 90%;
 }
 
-/* MIXINS */
 .app-wrapper {
   position: relative;
   height: 100%;
   padding-top: 4rem;
-}
-
-/* APP COMPONENTS */
-.app-logo {
-  width: 12rem;
-  height: auto;
-}
-
-.app-header {
-  margin-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-  .app-header {
-    margin-bottom: 5rem;
-  }
 }
 
 .app-main {
@@ -70,6 +63,27 @@ select {
   .app-main {
     max-width: 50%;
   }
+  .app-main::before {
+    content: '';
+    position: absolute;
+    top: -8rem;
+    right: -20rem;
+    background-image: url("../../img/bg-decor.svg");
+    background-repeat: no-repeat;
+    height: 326px;
+    width: 339px;
+    z-index: -1;
+  }
+}
+
+.app-header {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .app-header {
+    margin-bottom: 5rem;
+  }
 }
 
 .app-heading {
@@ -83,18 +97,29 @@ select {
 .app-heading::after {
   position: absolute;
   content: '';
-  width: 30%;
-  height: 3px;
+  width: 8rem;
+  height: 0.3rem;
   background-color: #fff;
   left: 0;
-  bottom: -10px;
+  bottom: -1rem;
+}
+
+.popular-currency {
+  margin-top: 5rem;
+  margin-bottom: 7rem;
+}
+
+/* APP COMPONENTS */
+.app-logo {
+  width: 12rem;
+  height: auto;
 }
 
 .exchange-form {
   margin-top: 5rem;
   padding: 3rem;
   background-color: #f2f2f2;
-  border-radius: 1rem;
+  border-radius: 10px;
   -webkit-box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01), 44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09), 5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 78px 98px 50px rgba(0, 0, 0, 0.01), 44px 55px 42px rgba(0, 0, 0, 0.05), 19px 24px 31px rgba(0, 0, 0, 0.09), 5px 6px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
 }
@@ -188,6 +213,7 @@ select {
 
 .exchange-form__dec-arrow {
   margin: 0 1.5rem;
+  padding-top: 0.7rem;
 }
 
 .exchange-form__result {
@@ -208,16 +234,16 @@ select {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 1.5rem 3rem;
+  padding: 1.3rem 2.8rem;
   margin-top: 2rem;
   font-weight: 600;
   -webkit-box-shadow: 0px 8px 10px rgba(149, 157, 180, 0.25);
           box-shadow: 0px 8px 10px rgba(149, 157, 180, 0.25);
-  border: none;
+  border: 2px solid #66a80f;
   border-radius: 2rem;
   cursor: pointer;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -233,9 +259,9 @@ select {
   background-color: #66a80f;
 }
 
-.popular-currency {
-  margin-top: 5rem;
-  margin-bottom: 7rem;
+.btn--primary:hover {
+  color: #66a80f;
+  background-color: #f2f2f2;
 }
 
 .popular-currency-wrapper {
@@ -258,27 +284,27 @@ select {
 
 .currency-table__title {
   font-size: 1.3rem;
-  padding: 15px 12px 15px 0;
+  padding: 1.5rem 1.2rem 1.5rem 0;
 }
 
 .currency-table__value {
-  padding: 15px 12px 15px 0;
+  padding: 1.5rem 1.2rem 1.5rem 0;
   text-align: center;
 }
 
 .currency-table__flag-icon {
   position: relative;
   top: 3px;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   margin-right: 1rem;
 }
 
 .currency-table .btn-show-more {
   background: none;
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
   transition: -webkit-transform 0.2s ease-in-out;
@@ -288,14 +314,5 @@ select {
 
 .currency-table .btn-show-more img {
   width: 100%;
-}
-
-.hide {
-  display: none;
-}
-
-.open {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
 }
 /*# sourceMappingURL=main.css.map */
