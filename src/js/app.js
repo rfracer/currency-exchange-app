@@ -1,11 +1,14 @@
 import { Calculate } from './Calculate';
 import { CurrencyList } from './CurrencyList';
 class App {
-  static init() {
+  listSymbols = ['USD', 'EUR', 'GBP', 'CHF', 'AUD'];
+
+  init() {
     new Calculate();
-    const list = new CurrencyList();
-    list.fetchData();
+    const list = new CurrencyList(this.listSymbols);
+    list.fetchAndDisplay();
   }
 }
 
-App.init();
+const app = new App();
+app.init();

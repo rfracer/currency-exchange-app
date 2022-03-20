@@ -1,17 +1,31 @@
 import { CurrencyChart } from './CurrencyChart';
+
+/* CurrencyList class represents table of currencies with info about:
+ * today value, average 7 days value, data to chart for each currency.
+ * Based on external API Data.
+ */
 export class CurrencyList {
-  symbols = ['USD', 'EUR', 'CHF', 'AUD'];
   data = [];
   labels = [];
 
-  constructor() {}
+  constructor(symbols) {
+    this.symbols = symbols;
+    this.table = document.getElementById('currency-table');
+  }
+
+  fetchAndDisplay() {
+    this.fetchData().then((data) => {
+      this.displayData(data);
+    });
+  }
 
   fetchData() {
     const todayDate = new Date().toISOString().slice(0, 10);
     const sevenDaysAgo = new Date(Date.now() - 6 * 24 * 60 * 60 * 1000)
       .toISOString()
       .slice(0, 10);
-    fetch(
+
+    return fetch(
       `https://api.exchangerate.host/timeseries?start_date=${sevenDaysAgo}&end_date=${todayDate}&base=PLN&symbols=${this.symbols}&places=3`
     )
       .then((res) => {
@@ -21,18 +35,16 @@ export class CurrencyList {
         return res.json();
       })
       .then((data) => {
-        this.displayData(data.rates);
+        return data.rates;
       })
       .catch((err) => alert(err));
   }
 
-  /* Create object with Currency symbols as keys
-  
+  /* addSymbolstoData() => Create object with Currency symbols as keys
   [
     currencyName: [],
     currencyName: []
   ]
-  
   */
 
   addSymbolsToData() {
@@ -43,33 +55,40 @@ export class CurrencyList {
   }
 
   /*
-  Transform data from API to create format:
+  transformData() => Transform data from API to create format:
   [
     currencyName: [values],
     currencyName: [values],
   ]
-
   */
+
   transformData(data) {
     for (let day in data) {
-      this.labels.push(day);
+      this.addChartLabel(day);
       if (data.hasOwnProperty(day)) {
-        const dayCurrencyRates = data[day];
-        for (let currency in dayCurrencyRates) {
-          if (dayCurrencyRates.hasOwnProperty(currency)) {
-            this.data.forEach((element) => {
-              for (let key in element) {
-                if (key === currency) {
-                  element[key].push(
-                    (1 / dayCurrencyRates[currency]).toFixed(2)
-                  );
-                }
-              }
-            });
-          }
+        const allCurrencyDayRates = data[day];
+        for (let currency in allCurrencyDayRates) {
+          this.addCurrencyValueToDayArray(allCurrencyDayRates, currency);
         }
       }
     }
+  }
+
+  addCurrencyValueToDayArray(allCurrencyDayRates, currency) {
+    if (allCurrencyDayRates.hasOwnProperty(currency)) {
+      this.data.forEach((specificCurrencyObject) => {
+        const key = Object.keys(specificCurrencyObject)[0];
+        if (key === currency) {
+          specificCurrencyObject[key].push(
+            (1 / allCurrencyDayRates[currency]).toFixed(2)
+          );
+        }
+      });
+    }
+  }
+
+  addChartLabel(label) {
+    this.labels.push(label);
   }
 
   displayData(data) {
@@ -79,39 +98,35 @@ export class CurrencyList {
   }
 
   generateTable(data) {
-    const table = document.getElementById('currency-table');
-    const tableBody = table.querySelector('tbody');
-    data.forEach((element, index) => {
-      // creates a table row
+    const tableBody = this.table.querySelector('tbody');
+
+    data.forEach((currencyObject) => {
       const row = document.createElement('tr');
       row.classList.add('currency-table__row');
 
-      for (let i = 0; i < 4; i++) {
-        const cell = document.createElement('td');
-        cell.classList.add('currency-table__value');
-        const currency = Object.keys(element)[0];
-        cell.dataset.currency = currency; //??
-        const average = this.getAverageValue(element[currency]);
+      const currency = Object.keys(currencyObject)[0];
+      const average = this.getAverageValue(currencyObject[currency]);
 
-        const rowValues = [currency, element[currency][6], average, ''];
+      const tableRowValues = [
+        currency,
+        currencyObject[currency][6],
+        average,
+        '',
+      ];
 
-        const cellText = document.createTextNode(rowValues[i]);
-        //first row with flag
-        if (i === 0) {
+      for (let column = 0; column < tableRowValues.length; column++) {
+        const cell = this.generateCell(currency);
+        const cellText = document.createTextNode(tableRowValues[column]);
+
+        if (column === 0) {
           const img = document.createElement('img');
           img.classList.add('currency-table__flag-icon');
-          img.src = `./img/${currency}-flag.png`;
+          img.src = `./img/flags/${currency}-flag.png`;
           cell.appendChild(img);
         }
-        //last row with button
-        if (i === 3) {
-          const btn = document.createElement('button');
-          btn.classList.add('btn-show-more');
-          btn.dataset.currency = currency;
-          btn.setAttribute('aria-expanded', 'false');
-          const img = document.createElement('img');
-          img.src = './img/arrow-down.svg';
-          btn.appendChild(img);
+
+        if (column === tableRowValues.length - 1) {
+          const btn = this.createShowMoreButton(currency);
           cell.appendChild(btn);
 
           this.connectMoreInfoButton(btn);
@@ -120,76 +135,76 @@ export class CurrencyList {
         row.appendChild(cell);
       }
 
-      // add the row to the end of the table body
       tableBody.appendChild(row);
     });
+  }
+
+  createShowMoreButton(currency) {
+    const btn = document.createElement('button');
+    btn.classList.add('btn-show-more');
+    btn.dataset.currency = currency;
+    btn.setAttribute('aria-expanded', 'false');
+    const img = document.createElement('img');
+    img.src = './img/arrow-down.svg';
+    btn.appendChild(img);
+    return btn;
+  }
+
+  generateCell(currency) {
+    const cell = document.createElement('td');
+    cell.classList.add('currency-table__value');
+    cell.dataset.currency = currency;
+    return cell;
   }
 
   connectMoreInfoButton(btn) {
     btn.addEventListener('click', this.showMoreInfoHandler.bind(this, btn));
   }
 
-  // connectChart() {
-  //   const chart = new Chart([1, 2, 3], 'USD');
-  //   chart.generateChart();
-  // }
-
-  // CONNECT HANDLER TO BUTTON CLICK
   showMoreInfoHandler(btn) {
     const currency = btn.dataset.currency;
 
     if (!btn.classList.contains('generated-chart')) {
-      const row = document.querySelector(
+      const selectedCurrencyRow = document.querySelector(
         `[data-currency="${currency}"]`
       ).parentElement;
-
-      const newRow = document.createElement('tr');
-      newRow.dataset.chart = currency;
-      const cell = document.createElement('td');
-      cell.setAttribute('colspan', '4');
-
-      const canvas = document.createElement('canvas');
-      canvas.id = `chart-${currency}`;
-      canvas.setAttribute('width', '100%');
-      cell.appendChild(canvas);
-
-      newRow.appendChild(cell);
-
-      row.after(newRow);
+      const newRow = this.generateRowForChart(currency);
+      selectedCurrencyRow.after(newRow);
 
       this.connectChart(this.data, currency, this.labels);
-
       btn.classList.add('generated-chart', 'open');
       newRow.classList.add('chart');
     } else {
-      const row = document.querySelector(`[data-chart="${currency}"]`);
-      row.classList.toggle('hide');
+      const chartRow = document.querySelector(`[data-chart="${currency}"]`);
+      chartRow.classList.toggle('hide');
       btn.setAttribute('aria-expanded', 'true');
       btn.classList.toggle('open');
     }
   }
 
-  // getCurrencyData(data, currency) {
-  //   data.forEach((element) => {
-  //     if (Object.keys(element)[0] == currency) {
-  //       return element[currency];
-  //     }
-  //   });
-  // }
+  generateRowForChart(currency) {
+    const newRow = document.createElement('tr');
+    newRow.dataset.chart = currency;
+    const cell = document.createElement('td');
+    cell.setAttribute('colspan', '4');
+    const canvas = document.createElement('canvas');
+    canvas.id = `chart-${currency}`;
+    canvas.setAttribute('width', '100%');
+    cell.appendChild(canvas);
+    newRow.appendChild(cell);
 
-  getAverageValue(arr) {
-    const average = arr.reduce((p, c) => +p + +c, 0) / arr.length;
-    return average.toFixed(2);
+    return newRow;
   }
 
   connectChart(inputData, currency, labels) {
     const data = inputData.filter((element) => {
-      if (Object.keys(element)[0] == currency) {
+      if (Object.keys(element)[0] === currency) {
         return element[currency];
       }
     });
+
     const currencyLastDaysData = data[0][currency];
-    const chartLabels = this.convertDataToMonthDay(labels);
+    const chartLabels = this.convertDateToMonthDayFormat(labels);
     const chart = new CurrencyChart(
       currencyLastDaysData,
       currency,
@@ -198,10 +213,15 @@ export class CurrencyList {
     chart.generateChart();
   }
 
-  convertDataToMonthDay(dates) {
+  convertDateToMonthDayFormat(dates) {
     const convertedDates = dates.map((date) => {
       return date.slice(5, 11);
     });
     return convertedDates;
+  }
+
+  getAverageValue(array) {
+    const average = array.reduce((p, c) => +p + +c, 0) / array.length;
+    return average.toFixed(2);
   }
 }

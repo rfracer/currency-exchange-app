@@ -1,9 +1,70 @@
 // APP LAYOUT PARTS
-//******************************************
 
-// APP WRAPPER CONTAINER
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+}
+
 .app-wrapper {
   position: relative;
   height: 100%;
   padding-top: 4rem;
+}
+
+.app-main {
+  position: relative;
+  margin: auto;
+  width: 100%;
+
+  @include tablet {
+    max-width: 80%;
+  }
+
+  @include desktop {
+    max-width: 50%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8rem;
+      right: -20rem;
+      background-image: url('../../img/bg-decor.svg');
+      background-repeat: no-repeat;
+      height: 326px;
+      width: 339px;
+      z-index: -1;
+    }
+  }
+}
+
+.app-header {
+  margin-bottom: 3rem;
+
+  @include tablet {
+    margin-bottom: 5rem;
+  }
+}
+
+.app-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 2.8rem;
+  color: $headers-color;
+  font-weight: 600;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 8rem;
+    height: 0.3rem;
+    background-color: #fff;
+    left: 0;
+    bottom: -1rem;
+  }
+}
+
+.popular-currency {
+  margin-top: 5rem;
+  margin-bottom: 7rem;
 }

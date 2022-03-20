@@ -1,5 +1,8 @@
 import Chart from 'chart.js/auto';
 
+/*  CurrencyChart class is used to set basic config data and generate
+ *  external Chart object.
+ */
 export class CurrencyChart {
   constructor(data, currency, labels) {
     this.data = data;

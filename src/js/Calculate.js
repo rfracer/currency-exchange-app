@@ -1,8 +1,12 @@
+/* Calculate class represents form to converts one currency to another
+ * based on external API Data and amount from DOM Input
+ */
 export class Calculate {
   isActive = false;
 
   constructor() {
     const form = document.getElementById('calc-form');
+
     form.addEventListener('submit', this.calculateHandler.bind(this));
   }
 
@@ -26,6 +30,7 @@ export class Calculate {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         this.generateResult(data.rates[baseCurrency], baseCurrency);
       })
       .catch((err) => alert(err));

@@ -33,11 +33,14 @@ select {
   font-family: 'Poppins', sans-serif;
 }
 
-/* UTILITIES*/
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
-  width: 90%;
+/* UTILITIES */
+
+.hide {
+  display: none;
+}
+
+.open {
+  transform: rotate(180deg);
 }
 
 /* MIXINS */
